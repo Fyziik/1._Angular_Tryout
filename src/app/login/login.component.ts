@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   correctUsernameFromDB: string = "Fyziik"
   correctPasswordFromDB: string = "1234"
   correctLogin = false;
+  attemptedLogin = false;
 
 
   constructor(private fb: FormBuilder) { }
@@ -36,9 +37,11 @@ export class LoginComponent implements OnInit {
   private validate(credentials: FormGroup) {
     if (credentials.value.username == this.correctUsernameFromDB) {
       if (credentials.value.password == this.correctPasswordFromDB) {
+        this.attemptedLogin = false;
         return true;
       }
     }
+    this.attemptedLogin = true;
     return false;
   }
 
@@ -53,5 +56,7 @@ export class LoginComponent implements OnInit {
   get email() { return this.loginForm.get('email') }
 
   get loginState() { return this.correctLogin }
+
+  get failedAttempt() { return this.attemptedLogin }
 
 }

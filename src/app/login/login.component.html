@@ -1,3 +1,16 @@
+<style>
+
+    .inputField {
+        font-size: 1.2rem;
+    }
+    
+    span {
+        font-weight: bold;
+        color: red;
+    }
+
+</style>
+
 <h1>Welcome to Andreas' homepage</h1>
 
 <h3 style="text-align: center;">Login</h3>
@@ -17,7 +30,7 @@
         <br>
     </span>
 
-    <input type="text" formControlName="username" id="usernameField" placeholder="Username" required minlength="4">
+    <input type="text" class="inputField" formControlName="username" id="usernameField" placeholder="Username" required minlength="4">
     <br>
 
     <!-- Password Field -->
@@ -30,7 +43,7 @@
         <br>
     </span>
 
-    <input type="password" formControlName="password" id="passwordField" placeholder="Password" required>
+    <input type="password" class="inputField" formControlName="password" id="passwordField" placeholder="Password" required>
     <br>
     
     <!-- First Name Field -->
@@ -43,7 +56,7 @@
         <br>
     </span>
 
-    <input type="text" formControlName="firstName" id="firstNameField" placeholder="First Name" required>
+    <input type="text" class="inputField" formControlName="firstName" id="firstNameField" placeholder="First Name" required>
     <br>
 
     <!-- Last Name Field -->
@@ -56,7 +69,7 @@
         <br>
     </span>
 
-    <input type="text" formControlName="lastName" id="lastNameField" placeholder="Last Name" required>
+    <input type="text" class="inputField" formControlName="lastName" id="lastNameField" placeholder="Last Name" required>
     <br>
 
     <!-- Email Field -->
@@ -69,17 +82,30 @@
         <br>
     </span>
 
-    <input type="email" formControlName="email" id="emailField" placeholder="Email" required>
+    <input type="email" class="inputField" formControlName="email" id="emailField" placeholder="Email" required>
     <br>
 
     <!-- Login button -->
-    <div *ngIf="loginForm.valid">
-        <button type="submit">Login</button>
-    </div>
+    <!-- This first version of login button uses data binding, which switches the disabled attribute to true or false
+        depending on the value of loginFor.valid - the reason i put ! infront is because its a double negative situation -->
+    <button type="submit" [disabled]="!loginForm.valid" style="margin-top: 5%; font-size: 1.2rem;">Login</button>
+    
+    <!-- Login button could also be like this where we use Angulars if statement
+
+        <div *ngIf="loginForm.valid">
+            <button type="submit">Login</button>
+        </div>
+
+    -->
 
     <!-- If correct credentials-->
     <div *ngIf="loginState">
         <p>You've logged in!</p>
+    </div>
+
+    <!-- Failed login attempt -->
+    <div *ngIf="failedAttempt">
+        <p>Wrong username or password</p>
     </div>
 
 </form>
