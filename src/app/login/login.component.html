@@ -1,11 +1,12 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" >
+<h1>Welcome to Andreas' homepage</h1>
+
+<h3 style="text-align: center;">Login</h3>
+
+<form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()" style="text-align: center;">
 
     <!-- Username Field -->
-    <input type="text" formControlName="username" id="usernameField" placeholder="Username" required minlength="4">
-    
     <span *ngIf="username.invalid && (username.dirty || username.touched)"
     class="alert alert-danger">
-
         <span *ngIf="username.errors.required">
             Username is required.
         </span>
@@ -13,60 +14,62 @@
         <span *ngIf="username.errors.minlength">
             Username must be at least 4 characters long.
         </span>
-  
+        <br>
     </span>
+
+    <input type="text" formControlName="username" id="usernameField" placeholder="Username" required minlength="4">
     <br>
 
     <!-- Password Field -->
-    <input type="password" formControlName="password" id="passwordField" placeholder="Password" required>
-    
     <span *ngIf="password.invalid && (password.dirty || password.touched)"
     class="alert alert-danger">
 
         <span *ngIf="password.errors.required">
             Password is required.
         </span>
-  
+        <br>
     </span>
+
+    <input type="password" formControlName="password" id="passwordField" placeholder="Password" required>
     <br>
     
     <!-- First Name Field -->
-    <input type="text" formControlName="firstName" id="firstNameField" placeholder="First Name" required>
-
     <span *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
     class="alert alert-danger">
 
         <span *ngIf="firstName.errors.required">
             First name is required.
         </span>
-  
+        <br>
     </span>
+
+    <input type="text" formControlName="firstName" id="firstNameField" placeholder="First Name" required>
     <br>
 
     <!-- Last Name Field -->
-    <input type="text" formControlName="lastName" id="lastNameField" placeholder="Last Name" required>
-
     <span *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
     class="alert alert-danger">
 
         <span *ngIf="lastName.errors.required">
             Last name is required.
         </span>
-  
+        <br>
     </span>
+
+    <input type="text" formControlName="lastName" id="lastNameField" placeholder="Last Name" required>
     <br>
 
     <!-- Email Field -->
-    <input type="email" formControlName="email" id="emailField" placeholder="Email" required>
-    
     <span *ngIf="email.invalid && (email.dirty || email.touched)"
     class="alert alert-danger">
 
         <span *ngIf="email.errors.required">
             Email is required.
         </span>
-  
+        <br>
     </span>
+
+    <input type="email" formControlName="email" id="emailField" placeholder="Email" required>
     <br>
 
     <!-- Login button -->
